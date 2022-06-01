@@ -47,5 +47,5 @@ while [[ $# -gt 0 ]]; do
 done
 
 
-name=$(yq '.cryo_data_name' ${dir}/cryo-data.yaml)
+name=$(yq '.cryo_data_name' ${dir}/cryo-data/meta.yaml)
 log_info "Extracting name: ${name}"

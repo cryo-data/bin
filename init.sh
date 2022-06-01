@@ -25,7 +25,7 @@ if [[ ! -d ./database ]]; then
   fi
 fi 
 
-for aka in $(yq '.aka | keys' ./template/cryo-data.yaml | cut -d" " -f2); do
+for aka in $(yq '.aka | keys' ./template/cryo-data/meta.yaml | cut -d" " -f2); do
   ## Fetch
   log_info "Checking for ${aka}"
   if [[ -d ${aka} ]]; then
