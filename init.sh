@@ -2,7 +2,6 @@
 
 # Initialize the cryo-data datalad sibling repositories
 
-
 # load pre.sh commands
 DIR=$(dirname $(readlink -f $0))
 source ${DIR}/pre.sh
@@ -34,8 +33,7 @@ for aka in $(yq '.aka | keys' ./template/cryo-data.yaml | cut -d" " -f2); do
   else
     log_warn "${aka} not found. Cloning..."
     datalad clone -d . git@github.com:cryo-data/${aka} ./${aka}
-    # log_warn "${aka} not found. Installing..."
-    # datalad install -d . git@github.com:cryo-data/${aka} ./${aka}
+    
     ## Create
     # log_warn "${aka} not found. Creating..."
     # datalad create -D "cryo-data ${aka}" ./${aka}
@@ -44,6 +42,11 @@ for aka in $(yq '.aka | keys' ./template/cryo-data.yaml | cut -d" " -f2); do
     # git remote add origin git@github.com:cryo-data/${aka}
     # datalad push --to origin
     # cd ..
+    ## remove
+    # rm -fR ${aka}
+    ## install
+    # log_warn "${aka} not found. Cloning..."
+    # datalad clone -d . git@github.com:cryo-data/${aka} ./${aka}
   fi
   
 done
